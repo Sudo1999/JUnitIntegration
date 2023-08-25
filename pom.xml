@@ -128,7 +128,7 @@
 			<artifactId>log4j-core</artifactId>
 		</dependency>
 		
-		<!-- Dépendance (finalement inutile) ajoutée pour le @Inject du Controller -->
+		<!-- Dépendance du @Inject du Controller finalement utilisée plus tard -->
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
@@ -146,7 +146,7 @@
 		    <groupId>jakarta.validation</groupId>
 		    <artifactId>jakarta.validation-api</artifactId>
 		</dependency>
-		<!-- Dépendance qui semble nécessaire au projet converti en SpringBoot -->
+		<!-- Dépendance indispensable du projet converti en SpringBoot -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -160,7 +160,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
-            <!-- Plugin qui semble nécessaire au projet converti en SpringBoot -->
+            <!-- Les tests d’intégration en IT ne sont pas gérés par maven-surefire-plugin mais par maven-failsafe-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>

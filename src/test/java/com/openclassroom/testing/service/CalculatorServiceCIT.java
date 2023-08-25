@@ -8,7 +8,7 @@ import com.openclassroom.testing.domain.Calculator;
 import com.openclassroom.testing.model.CalculationModel;
 import com.openclassroom.testing.model.CalculationType;
 
-public class CalculatorServiceIT {
+public class CalculatorServiceCIT { // CIT = Composants Integration Test
 
 	// Mise en place d'objets réels non mockés
 	private final Calculator calculator = new Calculator();
@@ -21,9 +21,9 @@ public class CalculatorServiceIT {
 	void testCalculate_shouldCalculateASolution_whenGivenACalculationModel() {
 
 		// WHEN
-		final int result = service.calculate(new CalculationModel(CalculationType.ADDITION, 1, 2)).getSolution();
+		final CalculationModel result = service.calculate(new CalculationModel(CalculationType.ADDITION, 1, 2));
 
 		// THEN
-		assertThat(result).isEqualTo(3);
+		assertThat(result.getSolution()).isEqualTo(3);
 	}
 }
