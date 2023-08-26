@@ -1,14 +1,13 @@
 package com.openclassroom.testing.service;
 
-import javax.inject.Named;
-
+//import javax.inject.Named;
 import org.springframework.stereotype.Component;
 
 import com.openclassroom.testing.domain.Calculator;
 import com.openclassroom.testing.model.CalculationModel;
 import com.openclassroom.testing.model.CalculationType;
 
-@Named
+//@Named
 @Component
 public class CalculatorServiceImplementation implements CalculatorService {
 

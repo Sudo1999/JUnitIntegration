@@ -16,6 +16,8 @@
         <!-- Sonar -->
         <sonar.organization>sudo1999</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <!-- Cucumber -->
+        <cucumber.version>7.13.0</cucumber.version>
     </properties>
     
 	<!-- Dépendance ajoutée pour SpringBoot -->
@@ -146,11 +148,43 @@
 		    <groupId>jakarta.validation</groupId>
 		    <artifactId>jakarta.validation-api</artifactId>
 		</dependency>
-		<!-- Dépendance indispensable du projet converti en SpringBoot -->
+		<!-- Dépendance indispensable au projet converti en SpringBoot -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>5.3.1</version>
+		</dependency>
+		
+		<!-- Dépendances de Cucumber -->
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- (Syntaxe => io.cucumber:cucumber-java:jar:7.13.0) -->
+		<dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-java</artifactId>
+		    <version>${cucumber.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-jvm</artifactId>
+		    <version>${cucumber.version}</version>
+		    <scope>test</scope>
+		    <type>pom</type>
+		</dependency>
+		<dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-spring</artifactId>
+		    <version>${cucumber.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-junit</artifactId>
+		    <version>${cucumber.version}</version>
+		    <scope>test</scope>
 		</dependency>
     </dependencies>
 

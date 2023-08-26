@@ -33,7 +33,7 @@ public class CalculatorControllerSIT { // SIT = System Integration Test
 	private SolutionFormatter formatter;
 
 	@Test
-	public void testCalculatorApp_whenRequestToAdd_thenSolutionIsShown() throws Exception {
+	public void givenCalculatorApp_whenRequestToAdd_thenSolutionIsShown() throws Exception {
 			
 		// GIVEN
 		when(calculator.add(2, 3)).thenReturn(5);
