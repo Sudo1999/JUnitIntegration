@@ -17,16 +17,16 @@ import io.cucumber.java.en.When;
 import io.cucumber.spring.CucumberContextConfiguration;
 
 @CucumberContextConfiguration
-@SpringBootTest()
+@SpringBootTest() // L'annotation cherche la @SpringBootConfiguration, qui est incluse dans la @SpringBootApplication de CalculatorApp
 @AutoConfigureMockMvc // L'autoconfiguration est nécessaire car Cucumber n'est pas compatible avec @MockBean
-public class CucumberAdditionSteps {
+public class CucumberFeaturesSteps {
 
 	@Inject
 	private MockMvc mockMvc;
 
 	private Integer thisLeftArgument;
 	private Integer thisRightArgument;
-	private String calculationType;
+	private String thisCalculationType;
 
 	@Given("un élève utilise le Calculateur")
 	public void a_student_is_using_the_calculator() throws Exception {
@@ -34,11 +34,12 @@ public class CucumberAdditionSteps {
 			.andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
 	}
 
-	@When("{int} et {int} sont additionnés")
-	public void two_integers_are_added(Integer leftArgument, Integer rightArgument) throws Exception {
+	@When("{int} et {int} font l'objet d'une {word}")
+	public void two_integers_are_used(Integer leftArgument, Integer rightArgument, String calculationType)
+		throws Exception {
 		thisLeftArgument = leftArgument;
 		thisRightArgument = rightArgument;
-		calculationType = "ADDITION";
+		thisCalculationType = calculationType;
 	}
 
 	@Then("on montre {int} à l'élève")
@@ -46,9 +47,35 @@ public class CucumberAdditionSteps {
 		final MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/calculator")
 			.param("leftArgument", thisLeftArgument.toString())
 			.param("rightArgument", thisRightArgument.toString())
-			.param("calculationType", calculationType))
+			.param("calculationType", thisCalculationType))
 			.andExpect(MockMvcResultMatchers.status().is2xxSuccessful()).andReturn();
 
 		assertThat(result.getResponse().getContentAsString()).contains(">" + expectedResult + "<");
 	}
+
+	/*// Test d'acceptation isolé :
+	
+	@Given("un élève utilise le Calculateur")
+	public void a_student_is_using_the_calculator() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/calculator"))
+			.andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
+	}
+	
+	@When("{int} et {int} sont additionnés")
+	public void two_integers_are_added(Integer leftArgument, Integer rightArgument) throws Exception {
+		thisLeftArgument = leftArgument;
+		thisRightArgument = rightArgument;
+		calculationType = "ADDITION";
+	}
+	
+	@Then("on montre {int} à l'élève")
+	public void the_student_is_shown(Integer expectedResult) throws Exception {
+		final MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/calculator")
+			.param("leftArgument", thisLeftArgument.toString())
+			.param("rightArgument", thisRightArgument.toString())
+			.param("calculationType", calculationType))
+			.andExpect(MockMvcResultMatchers.status().is2xxSuccessful()).andReturn();
+	
+		assertThat(result.getResponse().getContentAsString()).contains(">" + expectedResult + "<");
+	}*/
 }
