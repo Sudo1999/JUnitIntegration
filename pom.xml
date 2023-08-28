@@ -161,12 +161,12 @@
 			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- (Syntaxe => io.cucumber:cucumber-java:jar:7.13.0) -->
 		<dependency>
 		    <groupId>io.cucumber</groupId>
 		    <artifactId>cucumber-java</artifactId>
 		    <version>${cucumber.version}</version>
 		</dependency>
+		<!-- (Syntaxe => io.cucumber:cucumber-jvm:jar:7.13.0) -->
 		<dependency>
 		    <groupId>io.cucumber</groupId>
 		    <artifactId>cucumber-jvm</artifactId>
@@ -185,6 +185,17 @@
 		    <artifactId>cucumber-junit</artifactId>
 		    <version>${cucumber.version}</version>
 		    <scope>test</scope>
+		</dependency>
+		<!-- Dépendances de Selenium et du WebDriver -->		
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.5.2</version>
 		</dependency>
     </dependencies>
 

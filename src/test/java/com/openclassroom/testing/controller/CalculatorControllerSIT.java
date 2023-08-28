@@ -24,7 +24,7 @@ import com.openclassroom.testing.service.SolutionFormatter;
 @ExtendWith(SpringExtension.class) // SpringExtension assiste JUnit comme MockitoExtension le fait dans le cas des tests unitaires
 public class CalculatorControllerSIT { // SIT = System Integration Test
 
-	@Inject // Spring va gérer les dépendances des classes testées (les beans de l'annotation @WebMvcTest)
+	@Inject // Spring va gérer les dépendances des deux classes testées (les beans de l'annotation @WebMvcTest)
 	private MockMvc mockMvc; // Ces dépendances vont être mockées par l'annotation @MockBean
 
 	@MockBean
@@ -33,7 +33,7 @@ public class CalculatorControllerSIT { // SIT = System Integration Test
 	private SolutionFormatter formatter;
 
 	@Test
-	public void givenCalculatorApp_whenRequestToAdd_thenSolutionIsShown() throws Exception {
+	public void givenCalculator_whenRequestToAdd_thenSolutionIsShown() throws Exception {
 			
 		// GIVEN
 		when(calculator.add(2, 3)).thenReturn(5);
