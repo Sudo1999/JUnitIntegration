@@ -8,6 +8,7 @@
     <groupId>com.openclassroom.testing</groupId>
     <artifactId>junitcalculator</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <!-- Modification inutile pour déclencher sonar -->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
